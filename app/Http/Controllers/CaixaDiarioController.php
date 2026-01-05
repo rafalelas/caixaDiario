@@ -37,6 +37,7 @@ class CaixaDiarioController extends Controller
             'maquina2' => $request->maquina2 ?? 0,
             'maquina3' => $request->maquina3 ?? 0,
             'maquina4' => $request->maquina4 ?? 0,
+            'maquina5' => $request->maquina5 ?? 0,
             'dinheiro' => $request->dinheiro ?? 0,
             'total_taxas' => $request->total_taxas ?? 0,
         ]);
@@ -78,7 +79,13 @@ class CaixaDiarioController extends Controller
 
         $caixa->update($request->only([
             'data',
-            'maquina1','maquina2','maquina3','maquina4','dinheiro','total_taxas'
+            'maquina1',
+            'maquina2',
+            'maquina3',
+            'maquina4',
+            'maquina5',
+            'dinheiro',
+            'total_taxas',
         ]));
 
         CaixaItem::where('caixa_diario_id', $caixa->id)->delete();

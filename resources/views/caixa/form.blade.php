@@ -69,7 +69,7 @@
             <h2 class="text-xl font-bold mb-4">Formas de pagamento</h2>
 
             <div class="grid grid-cols-2 gap-4">
-                @foreach(['maquina1'=>'Máquina 1','maquina2'=>'Máquina 2','maquina3'=>'Máquina 3','maquina4'=>'Máquina 4','dinheiro'=>'Dinheiro','total_taxas'=>'Total de taxas'] as $field => $label)
+                @foreach(['Stone1'=>'Máquina 1','Stone2'=>'Máquina 2','Cielo1'=>'Máquina 3','Cielo2'=>'Máquina 4','MercadoPago'=>'Máquina 5','dinheiro'=>'Dinheiro','total_taxas'=>'Total de taxas'] as $field => $label)
                     <div>
                         <label class="block text-sm font-medium">{{ $label }}</label>
                         <input
