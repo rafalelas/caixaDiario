@@ -11,11 +11,6 @@ class MainController extends Controller
         return view('home');
     }
 
-    public function dashboard()
-    {
-        $caixas = CaixaDiario::orderBy('data', 'desc')->get();
-
-        return view('dashboard', compact('caixas'));
-    }
+    
 }
 

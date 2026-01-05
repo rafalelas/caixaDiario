@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CaixaDiarioController;
+use App\Http\Controllers\DashboardController;
 
 
 Route::get('/', [MainController::class, 'index'])->name('home');
@@ -17,7 +18,7 @@ Route::get('/register', [AuthController::class, 'registerForm'])->name('register
 Route::post('/register', [AuthController::class, 'register']);
 
 Route::middleware('auth')->group(function(){
-    Route::get('/dashboard', [MainController::class, 'dashboard'])->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     
     Route::get('/caixa/criar', [CaixaDiarioController::class, 'create'])->name('caixa.create');
     Route::post('/caixa', [CaixaDiarioController::class, 'store'])->name('caixa.store');
