@@ -33,11 +33,11 @@ class CaixaDiarioController extends Controller
 
         $caixa = CaixaDiario::create([
             'data' => $data,
-            'maquina1' => $request->maquina1 ?? 0,
-            'maquina2' => $request->maquina2 ?? 0,
-            'maquina3' => $request->maquina3 ?? 0,
-            'maquina4' => $request->maquina4 ?? 0,
-            'maquina5' => $request->maquina5 ?? 0,
+            'Stone1' => $request->Stone1 ?? 0,
+            'Stone2' => $request->Stone2 ?? 0,
+            'Cielo1' => $request->Cielo1 ?? 0,
+            'Cielo2' => $request->Cielo2 ?? 0,
+            'MercadoPago' => $request->MercadoPago ?? 0,
             'dinheiro' => $request->dinheiro ?? 0,
             'total_taxas' => $request->total_taxas ?? 0,
         ]);
@@ -79,11 +79,11 @@ class CaixaDiarioController extends Controller
 
         $caixa->update($request->only([
             'data',
-            'maquina1',
-            'maquina2',
-            'maquina3',
-            'maquina4',
-            'maquina5',
+            'Stone1',
+            'Stone2',
+            'Cielo1',
+            'Cielo2',
+            'MercadoPago',
             'dinheiro',
             'total_taxas',
         ]));
