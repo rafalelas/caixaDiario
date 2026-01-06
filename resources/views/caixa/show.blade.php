@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('conteudo')
 <div class="p-6 max-w-4xl mx-auto">
     <p class="text-left text-sm text-[#22162B] mt-6">
@@ -10,14 +9,33 @@
 
     <div class="bg-white shadow rounded p-6 mb-4">
         <h2 class="text-lg font-semibold mb-2">Resumo de Pagamentos</h2>
+
         <div class="grid grid-cols-2 gap-2">
-            <div>Maquininhas:</div><div>{{ number_format($caixa->totalMaquinas(), 2, ',', '.') }}</div>
-            <div>Dinheiro:</div><div>{{ number_format($caixa->dinheiro, 2, ',', '.') }}</div>
-            <div>Taxas:</div><div>{{ number_format($caixa->total_taxas, 2, ',', '.') }}</div>
-            <div class="font-bold">Total Pagamentos:</div>
-            <div class="font-bold">{{ number_format($caixa->totalPagamentos(), 2, ',', '.') }}</div>
+           <div>Maquininhas:</div>
+            <div>R$ {{ number_format($caixa->totalMaquinas(), 2, ',', '.') }}</div>
+
+            <div>Dinheiro (bruto):</div>
+            <div>R$ {{ number_format($caixa->dinheiro, 2, ',', '.') }}</div>
+
+            <hr class="col-span-2 my-2">
+
+            <div class="font-semibold">Subtotal:</div>
+            <div class="font-semibold">
+                R$ {{ number_format($caixa->subtotalPagamentos(), 2, ',', '.') }}
+            </div>
+
+            <div>Taxas:</div>
+            <div>- R$ {{ number_format($caixa->total_taxas, 2, ',', '.') }}</div>
+
+            <div class="font-bold">Valor total de pagamentos:</div>
+            <div class="font-bold">
+                R$ {{ number_format($caixa->totalGeral(), 2, ',', '.') }}
+            </div>
+
         </div>
+
     </div>
+
 
     <div class="bg-white shadow rounded p-6">
         <h2 class="text-lg font-semibold mb-2">Produtos vendidos</h2>
@@ -61,5 +79,20 @@
     <div class="mt-4 text-center font-bold">
         Total Geral: R$ {{ number_format($caixa->totalGeral(), 2, ',', '.') }}
     </div>
+
+    <div class="mt-2 text-center font-bold">
+        Outros Recebimentos:
+        R$ {{ number_format($caixa->outrosRecebimentos(), 2, ',', '.') }}
+    </div>
+
+
 </div>
 @endsection
+
+<!-- Produtos vendidos = origem do dinheiro
+
+Pagamentos = dinheiro real
+
+Total geral = dinheiro que entrou (após taxas)
+
+Outros recebimentos = diferença entre pagamento e produtos -->
