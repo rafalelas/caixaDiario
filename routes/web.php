@@ -6,6 +6,7 @@ use App\Http\Controllers\MainController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CaixaDiarioController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SettingsController;
 
 
 Route::get('/', [MainController::class, 'index'])->name('home');
@@ -28,10 +29,10 @@ Route::middleware('auth')->group(function(){
     Route::get('/caixa/{caixa}', [CaixaDiarioController::class, 'show'])->name('caixa.show');
     Route::delete('/caixa/{caixa}', [CaixaDiarioController::class, 'destroy'])->name('caixa.destroy');
 
-
     Route::get('/perfil', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::post('/perfil/editar', [ProfileController::class, 'update'])->name('profile.update');
     Route::get('/configuracoes', [ProfileController::class, 'settings'])->name('settings');
+    Route::post('/configuracoes', [SettingsController::class, 'update'])->name('settings.update');
 
     Route::post('/configuracoes/atualizar', [ProfileController::class, 'updateSettings'])->name('settings.update');
 

@@ -14,7 +14,7 @@
            <div>Maquininhas:</div>
             <div>R$ {{ number_format($caixa->totalMaquinas(), 2, ',', '.') }}</div>
 
-            <div>Dinheiro (bruto):</div>
+            <div>Dinheiro em papel:</div>
             <div>R$ {{ number_format($caixa->dinheiro, 2, ',', '.') }}</div>
 
             <hr class="col-span-2 my-2">

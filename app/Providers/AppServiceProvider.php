@@ -21,5 +21,12 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Carbon::setLocale('pt_BR');
+
+        if(auth()->check()){
+            $tz = auth()->user()->preferences['timezone'] ?? config('app.timezone');
+            config(['app.timezone' => $tz]);
+            date_default_timezone_set($tz);
+            Carbon::setLocale(app()->getLocale());
+        }
     }
 }

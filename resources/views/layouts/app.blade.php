@@ -1,3 +1,7 @@
+@php
+    $theme = auth()->user()->preferences['theme'] ?? 'light';
+@endphp
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +10,7 @@
     <title>Caixa Diário</title>
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" type="image/x-icon">
 </head>
-<body class="bg-gray-100 min-h-screen">
+<body class="{{ $theme === 'dark' ? 'dark' : '' }}">
 
     {{-- HEADER --}}
     <header class="bg-white shadow px-6 py-3 flex justify-between items-center">
