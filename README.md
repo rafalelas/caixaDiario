@@ -1,64 +1,152 @@
-<<<<<<< HEAD
-# caixaDiario
-Um projeto pessoal para ajudar meu pai no trabalho. Um sistema com CRUD em que reúne informações para o fechamento do caixa diário e para ter um relatório de fácil acesso.
-=======
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+Caixa Diário
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Projeto pessoal desenvolvido para resolver um problema real do dia a dia: organizar e registrar o fechamento de caixa diário de forma simples, confiável e acessível.
 
-## About Laravel
+O sistema permite o controle de vendas por produto, diferentes formas de pagamento (máquinas, dinheiro e taxas) e a visualização de caixas anteriores, facilitando conferência, correções e histórico financeiro.
+Foi pensado para uso prático, evitando erros comuns em controles manuais e planilhas.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Contexto e Motivação
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Este projeto surgiu a partir de uma necessidade real no trabalho do meu pai. A ideia foi transformar um processo manual e sujeito a erros em um sistema web simples, com dados centralizados e persistidos em banco de dados.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Além do uso prático, o projeto também funciona como um estudo aplicado de desenvolvimento backend com Laravel, organização de regras de negócio e estruturação de CRUDs reais.
 
-## Learning Laravel
+Funcionalidades Principais
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+Criação de caixa diário com data controlada
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Registro de vendas por produto
 
-## Laravel Sponsors
+Controle de múltiplas formas de pagamento
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Edição de caixas já criados
 
-### Premium Partners
+Listagem e visualização de caixas anteriores
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+Autenticação de usuários
 
-## Contributing
+Estrutura preparada para evolução futura (relatórios, permissões, etc.)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Tecnologias Utilizadas
 
-## Code of Conduct
+O projeto foi desenvolvido utilizando:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+PHP com Laravel
 
-## Security Vulnerabilities
+MySQL
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Blade para as views
 
-## License
+HTML e CSS
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
->>>>>>> 129e45a (commit inicial)
+Git e GitHub para versionamento
+
+A estrutura segue os padrões do Laravel, com separação clara entre controllers, models, migrations e views.
+
+Estrutura do Projeto
+
+CaixaDiario: entidade principal do sistema
+
+Produtos: cadastro base para vendas
+
+CaixaItens: relação entre caixa e produtos vendidos
+
+Controllers organizados por responsabilidade
+
+Migrations versionando toda a estrutura do banco
+
+Próximos Passos
+
+Algumas melhorias já estão planejadas para evolução do projeto:
+
+Implementar relatórios diários e mensais de faturamento
+
+Cálculo automático de totais por forma de pagamento
+
+Controle de permissões por tipo de usuário
+
+Dashboard com indicadores visuais
+
+Exportação de dados (PDF ou CSV)
+
+Validações mais robustas no backend
+
+Testes automatizados para regras de negócio
+
+Status
+
+Projeto em desenvolvimento contínuo, com foco em qualidade de código, clareza de regras e evolução incremental baseada em necessidades reais.
+
+Como rodar o projeto localmente
+
+Este projeto foi desenvolvido com Laravel e utiliza MySQL como banco de dados.
+Para rodar localmente, é necessário ter o ambiente básico de desenvolvimento PHP configurado.
+
+Requisitos
+
+PHP 8.1+
+
+Composer
+
+MySQL
+
+Node.js e NPM (para assets)
+
+Servidor local (XAMPP, Laragon ou similar)
+
+Passo a passo
+
+Clone o repositório:
+
+```bash
+git clone https://github.com/rafalelas/caixaDiario.git
+cd caixaDiario
+```
+
+
+Instale as dependências do PHP:
+```bash
+composer install
+```
+
+Copie o arquivo de ambiente e configure:
+```bash
+cp .env.example .env
+```
+
+No arquivo .env, ajuste principalmente:
+
+- DB_DATABASE
+
+- DB_USERNAME
+
+- DB_PASSWORD
+
+Gere a chave da aplicação:
+```bash
+php artisan key:generate
+```
+
+Execute as migrations e seeders:
+```bash
+php artisan migrate --seed
+```
+
+Instale as dependências do front-end:
+```bash
+npm install
+npm run dev
+```
+
+Inicie o servidor:
+```bash
+php artisan serve
+```
+
+Acesse no navegador:
+```bash
+http://localhost:8000
+```
+Usuários e dados iniciais
+
+O projeto possui seeders para produtos, permitindo testar o fluxo completo do caixa diário logo após a instalação.
