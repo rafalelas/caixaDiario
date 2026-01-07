@@ -27,11 +27,12 @@
             <div>Taxas:</div>
             <div>- R$ {{ number_format($caixa->total_taxas, 2, ',', '.') }}</div>
 
-            <div class="font-bold">Valor total de pagamentos:</div>
+            <div class="font-bold">
+                Valor total de pagamentos:
+            </div>
             <div class="font-bold">
                 R$ {{ number_format($caixa->totalGeral(), 2, ',', '.') }}
-            </div>
-
+            </div>  
         </div>
 
     </div>
@@ -86,13 +87,6 @@
     </div>
 
 
+
 </div>
 @endsection
-
-<!-- Produtos vendidos = origem do dinheiro
-
-Pagamentos = dinheiro real
-
-Total geral = dinheiro que entrou (após taxas)
-
-Outros recebimentos = diferença entre pagamento e produtos -->
