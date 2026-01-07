@@ -23,38 +23,34 @@ class CaixaDiario extends Model
         'data' => 'date',
     ];
 
+    /* =======================
+     * RELAÇÕES
+     * ======================= */
     public function itens()
     {
         return $this->hasMany(CaixaItem::class);
     }
 
-    public function totalProdutos(){
-        return $this->itens->sum(function ($item){
-            return $item->quantidade * $item->produto->preco;
+    /* =======================
+     * PRODUTOS
+     * ======================= */
+    public function totalProdutos()
+    {
+        return $this->itens->sum(function ($item) {
+            return $item->quantidade * ($item->produto->preco ?? 0);
         });
     }
 
-    public function totalMaquinas(){
-        $m1 = $this->Stone1 ?? 0;
-        $m2 = $this->Stone2 ?? 0;
-        $m3 = $this->Cielo1 ?? 0;
-        $m4 = $this->Cielo2 ?? 0;
-        $m5 = $this->MercadoPago ?? 0;
-
-        return (float)$m1 + (float)$m2 + (float)$m3 + (float)$m4 + (float)$m5;
+    public function totalProdutosQuantidade()
+    {
+        return $this->itens->sum('quantidade');
     }
-
-    // public function totalGeral(){
-    //     return $this->totalProdutos()
-    //         + $this->totalMaquinas()
-    //         + $this->dinheiro
-    //         - $this->total_taxas;
-    // }
 
     public function produtoBreakdown()
     {
         return $this->itens->map(function ($item) {
             $preco = $item->produto->preco ?? 0;
+
             return [
                 'produto_id' => $item->produto->id ?? null,
                 'nome' => $item->produto->nome ?? '—',
@@ -65,46 +61,46 @@ class CaixaDiario extends Model
         });
     }
 
-    public function totalProdutosQuantidade()
+    /* =======================
+     * PAGAMENTOS
+     * ======================= */
+
+    // soma de todas as maquininhas
+    public function totalMaquinas()
     {
-        return $this->itens->sum('quantidade');
+        return
+            (float) ($this->Stone1 ?? 0) +
+            (float) ($this->Stone2 ?? 0) +
+            (float) ($this->Cielo1 ?? 0) +
+            (float) ($this->Cielo2 ?? 0) +
+            (float) ($this->MercadoPago ?? 0);
     }
 
+    // total bruto recebido (antes das taxas)
+    public function subtotalPagamentos()
+    {
+        return $this->totalMaquinas() + ($this->dinheiro ?? 0);
+    }
+
+    // total líquido recebido (dinheiro real)
     public function totalPagamentos()
     {
-        return $this->totalMaquinas() + $this->dinheiro - $this->total_taxas;
+        return $this->subtotalPagamentos() - ($this->total_taxas ?? 0);
     }
 
-    // total que entrou em máquinas (bruto)
-public function totalMaquinasBruto()
-{
-    return $this->totalMaquinas();
-}
+    /* =======================
+     * RESULTADOS FINAIS
+     * ======================= */
 
-// total que entrou em máquinas (líquido)
-public function totalMaquinasLiquido()
-{
-    return $this->totalMaquinas() + $this->dinheiro - $this->total_taxas;
-}
-
-// total recebido no caixa físico (dinheiro)
-public function totalDinheiro()
-{
-    return (float) $this->dinheiro;
-}
-
-// total geral REAL (o que entrou no banco)
-public function totalGeral()
-{
-    return $this->totalMaquinas() - $this->total_taxas;
-}
-
-    public function subtotalPagamentos(){
-        return $this-> totalMaquinas() + $this-> dinheiro;
+    // Total geral = dinheiro real que entrou (líquido)
+    public function totalGeral()
+    {
+        return $this->totalPagamentos();
     }
 
-    public function outrosRecebimentos(){
-        return $this-> subtotalPagamentos() - $this-> totalProdutos();
+    // Diferença entre dinheiro recebido e produtos vendidos
+    public function outrosRecebimentos()
+    {
+        return $this->totalGeral() - $this->totalProdutos();
     }
-
-}  
+}
