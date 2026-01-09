@@ -86,6 +86,38 @@
         R$ {{ number_format($caixa->outrosRecebimentos(), 2, ',', '.') }}
     </div>
 
+        <div class="bg-white shadow rounded p-6 mt-6">
+    <h2 class="text-lg font-semibold mb-4">Comentários</h2>
+
+    @forelse($caixa->comentarios as $comentario)
+        <div class="border-b py-2">
+            <p class="text-sm text-gray-600">
+                {{ $comentario->user->name ?? 'Usuário' }}
+                • {{ $comentario->created_at->format('d/m/Y H:i') }}
+            </p>
+            <p>{{ $comentario->conteudo }}</p>
+        </div>
+    @empty
+        <p class="text-sm text-gray-500">Nenhum comentário ainda.</p>
+    @endforelse
+</div>
+    <form action="{{ route('comentarios.store', $caixa) }}" method="POST" class="mt-4">
+    @csrf
+
+    <textarea
+        name="conteudo"
+        rows="3"
+        class="w-full border rounded p-2"
+        placeholder="Adicionar comentário..."
+        required
+    ></textarea>
+
+    <div class="flex justify-end mt-2">
+        <button class="bg-blue-600 text-white px-4 py-2 rounded">
+            Salvar comentário
+        </button>
+    </div>
+</form>
 
 
 </div>
