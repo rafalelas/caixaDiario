@@ -103,4 +103,9 @@ class CaixaDiario extends Model
     {
         return $this->totalGeral() - $this->totalProdutos();
     }
+
+    public function comentarios()
+    {
+        return $this->hasMany(Comentario::class, 'caixa_diario_id');
+    }
 }
