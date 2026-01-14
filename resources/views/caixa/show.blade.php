@@ -25,7 +25,7 @@
             </div>
 
             <div>Taxas:</div>
-            <div>- R$ {{ number_format($caixa->total_taxas, 2, ',', '.') }}</div>
+            <div class="text-red-500">- R$ {{ number_format($caixa->total_taxas, 2, ',', '.') }}</div>
 
             <div class="font-bold">
                 Valor total de pagamentos:
