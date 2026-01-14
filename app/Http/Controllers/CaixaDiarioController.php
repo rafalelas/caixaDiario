@@ -32,6 +32,7 @@ class CaixaDiarioController extends Controller
         $data = Carbon::parse($request->input('data'));
 
         $caixa = CaixaDiario::create([
+            'user_id' => auth()->id(),
             'data' => $data,
             'Stone1' => $request->Stone1 ?? 0,
             'Stone2' => $request->Stone2 ?? 0,

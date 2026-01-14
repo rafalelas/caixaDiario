@@ -9,6 +9,7 @@ class CaixaDiario extends Model
     protected $table = 'caixa_diario';
 
     protected $fillable = [
+        'user_id',
         'data',
         'Stone1',
         'Stone2',
@@ -101,7 +102,7 @@ class CaixaDiario extends Model
     // Diferença entre dinheiro recebido e produtos vendidos
     public function outrosRecebimentos()
     {
-        return $this->totalGeral() - $this->totalProdutos();
+        return $this->subtotalPagamentos() - $this->totalProdutos();
     }
 
     public function comentarios()

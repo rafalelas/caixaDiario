@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('caixa_diario', function (Blueprint $table) {
-            $table->decimal('maquina5', 10, 2)->default(0)->after('maquina4');
+        Schema::table('caixa_itens', function (Blueprint $table) {
+            $table->dropColumn('subtotal');
         });
     }
 
@@ -21,8 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('caixa_diario', function (Blueprint $table) {
-            $table->dropColumn('maquina5');
+        Schema::table('caixa_itens', function (Blueprint $table) {
+            $table->string('subtotal');
         });
     }
 };
