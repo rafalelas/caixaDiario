@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CaixaDiarioController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\ComentarioController;
 
 
 Route::get('/', [MainController::class, 'index'])->name('home');
@@ -28,7 +29,9 @@ Route::middleware('auth')->group(function(){
     Route::put('/caixa/{caixa}', [CaixaDiarioController::class, 'update'])->name('caixa.update');
     Route::get('/caixa/{caixa}', [CaixaDiarioController::class, 'show'])->name('caixa.show');
     Route::delete('/caixa/{caixa}', [CaixaDiarioController::class, 'destroy'])->name('caixa.destroy');
-    Route::post('/caixa/{caixa}/comentarios', [App\Http\Controllers\ComentarioController::class, 'store'])->name('comentarios.store');
+    Route::post('/caixa/{caixa}/comentarios', [ComentarioController::class, 'store'])
+    ->middleware('auth')
+    ->name('comentarios.store');
 
 
     Route::get('/perfil', [ProfileController::class, 'edit'])->name('profile.edit');

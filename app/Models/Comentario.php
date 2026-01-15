@@ -9,7 +9,7 @@ class Comentario extends Model
     protected $fillable = [
         'caixa_diario_id',
         'user_id',
-        'conteudo',
+        'comentario',
     ];
 
     public function caixa()
