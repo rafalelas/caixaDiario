@@ -107,6 +107,6 @@ class CaixaDiario extends Model
 
     public function comentarios()
     {
-        return $this->hasMany(Comentario::class, 'caixa_diario_id');
+        return $this->hasMany(Comentario::class);
     }
 }
